@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no, user-scalable=no"
+    />
+    <meta name="theme-color" content="#000000"/>
+    <title>live h5</title>
+    <style>
+        #root{
+          background: transparent;
+        }
+    </style>
+  </head>
+  <body style="background-color: transparent">
+    <noscript>You need to enable JavaScript to run this app.</noscript>
+    <div id="root"></div>
+  </body>
+  <script>
+    window.onload = function() {
+      // 阻止双击放大
+      var lastTouchEnd = 0;
+      document.addEventListener('touchstart', function(event) {
+          if (event.touches.length > 1) {
+              event.preventDefault();
+          }
+      });
+      document.addEventListener('touchend', function(event) {
+          var now = (new Date()).getTime();
+          if (now - lastTouchEnd <= 500) {
+              event.preventDefault();
+          }
+          lastTouchEnd = now;
+      }, false);
+
+      // 阻止双指放大
+      document.addEventListener('gesturestart', function(event) {
+          event.preventDefault();
+      });
+}
+  </script>
+</html>
